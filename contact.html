@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Stress Relief Blog</title>
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">PEACE blogs</div>
+        <div class="menu" id="menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="all posts.html">All Posts</a></li>
+            </ul>
+        </div>
+        <div class="toggle-btn" id="toggle-btn">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+
+    
+
+    <main>
+        <section class="contact">
+            <div class="container">
+                <div class="contact-info fade-in">
+                    <h2>Contact Us</h2>
+                    <p>If you have any questions or feedback, feel free to reach out to us through the form below or contact us directly at:</p>
+                    <p><strong>Email:</strong> <a href="mailto:info@stressreliefblog.com">info@stressreliefblog.com</a></p>
+                    <p><strong>Phone:</strong> <a href="tel:+1234567890">+1 234 567 890</a></p>
+                    <p><strong>Address:</strong> 123 Wellness Street, City, Country</p>
+                </div>
+
+                <form class="contact-form fade-in" action="https://api.web3forms.com/submit" method="POST">
+                    <h2>Send Us a Message</h2>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <input type="hidden" name="access_key" value="8c42c06f-7bd5-48ea-9f15-5bd49f7a50c1">
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <footer>
+            <footer>
+                <div class="footer-container">
+                    <div class="footer-about">
+                        <h3>About Us</h3>
+                        <p>Stress Relief Blog provides expert tips and advice on managing stress through mindfulness, therapy, and relaxation techniques. Join our community to start your journey to a stress-free life.</p>
+                    </div>
+                    <div class="footer-links">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-contact">
+                        <h3>Contact Us</h3>
+                        <ul>
+                            <li><i class="fas fa-map-marker-alt"></i> 123 Wellness Street, City, Country</li>
+                            <li><i class="fas fa-phone"></i> <a href="tel:+1234567890">+1 234 567 890</a></li>
+                            <li><i class="fas fa-envelope"></i> <a href="mailto:info@stressreliefblog.com">info@stressreliefblog.com</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-social">
+                        <h3>Follow Us</h3>
+                        <ul class="social-icons">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 Stress Relief Blog. All rights reserved. | Designed by [Your Name]</p>
+                </div>
+            </footer>
+    </footer>
+
+
+
+
+    <script>
+        document.querySelector('.contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+        
+            // Form data
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var subject = document.getElementById('subject').value;
+            var message = document.getElementById('message').value;
+        
+            // Validation
+            var isValid = true;
+            document.querySelectorAll('.error-message').forEach(el => el.remove());
+        
+            if (name.trim() === '') {
+                displayError('name', 'Name is required.');
+                isValid = false;
+            }
+            if (email.trim() === '') {
+                displayError('email', 'Email is required.');
+                isValid = false;
+            } else if (!validateEmail(email)) {
+                displayError('email', 'Enter a valid email address.');
+                isValid = false;
+            }
+            if (subject.trim() === '') {
+                displayError('subject', 'Subject is required.');
+                isValid = false;
+            }
+            if (message.trim() === '') {
+                displayError('message', 'Message is required.');
+                isValid = false;
+            }
+        
+            // if (!isValid) return;
+        
+            // // Send the form data
+            // var formData = new FormData(this);
+            // fetch(this.action, {
+            //     method: 'POST',
+            //     body: formData
+            // })
+            // .then(response => {
+            //     if (response.ok) {
+            //         alert('Message sent successfully!');
+            //         this.reset(); // Clear the form fields
+            //     } else {
+            //         alert('There was an error sending your message.');
+            //     }
+            // })
+            // .catch(error => {
+            //     alert('There was a problem with your request.');
+            // });
+        });
+        
+        // Function to display error messages
+        // function displayError(inputId, message) {
+        //     var inputField = document.getElementById(inputId);
+        //     var error = document.createElement('div');
+        //     error.className = 'error-message';
+        //     error.textContent = message;
+        //     inputField.parentNode.appendChild(error);
+        // }
+        
+        // Function to validate email format
+        function validateEmail(email) {
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+        </script>
+
+
+  
+        
+
+    <script src="nav.js"></script>
+</body>
+</html>
